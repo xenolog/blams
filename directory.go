@@ -1,28 +1,34 @@
 package blams
 
 import (
-	"bufio"
-	"fmt"
-	//"os"
-	//"runtime"
+    "bufio"
+    "fmt"
+    //"os"
+    //"runtime"
 )
 
 type discoverer struct {
-	id string
+    id  string
+    key string
 }
 
 type node struct {
-	//id     string,
-	name string
+    //id     string,
+    name   string
+    ipaddr map[string]string
 }
 
-func (s *Discoverer) UseMcast(if_name string, port uint16, mcast_group string) (id string, err error) {
-	// add mcast sender/listener to Discoverer
-	return id, nil
+func (s *discoverer) UseMcast(if_name string, port uint16, mcast_group string) (id string, err error) {
+    // add mcast sender/listener to Discoverer
+    return id, nil
 }
 
 type Directory interface {
-	UseMcast(if_name string, port uint16, mcast_group string)
-	UseBcast(if_name string, port uint16)
-	Use(if_name string, port uint16)
+    UseMcast(if_name string, port uint16, mcast_group string)
+    //UseBcast(if_name string, port uint16)
+    //UseDirect(ipaddr string, port uint16)
+}
+
+func NewDirectory() Directory {
+    return new(discoverer)
 }
