@@ -14,7 +14,7 @@ type discoverer struct {
 
 type node struct {
     //id     string,
-    name   string
+    name   string //may be []rune
     ipaddr map[string]string
 }
 
